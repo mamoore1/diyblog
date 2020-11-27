@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>DIY Blog Home</title>
+{% endblock %}
+
+{% block content %}
+  <h1>DIY Blog Home</h1>
+  <p>Welcome to DIY Blog, a website developed by <em>mamoore1</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The blog has the following post counts:</p>
+  <ul>
+    <li><strong>Bloggers:</strong> {{ num_bloggers }}</li>
+      <li><strong>Blog posts:</strong> {{ num_blogposts }}</li>
+      <li><strong>Comments:</strong> {{ num_comments }}</li>
+  </ul>
+
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+{% endblock %}

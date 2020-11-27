@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ blogpost.title }}</h1>
+
+
+  <p><strong>Post date</strong> {{ blogpost.post_date }}</p>
+  <p><strong>Author:</strong> <a href="{% url 'blogger-detail' blogpost.author.pk %}">{{ blogpost.author }}</a></p>
+  <p><strong>Description:</strong> {{ blogpost.description }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Comments</h4>
+
+  {% if blogpost.comment_set.all %}
+    {% for comment in blogpost.comment_set.all %}
+      <hr>
+      <p>{{ comment.commenter }} ({{ comment.post_time }}) - {{ comment.text }}</p>
+      <hr>
+    {% endfor %}
+  {% endif %}
+  </div>
+  {% if user.is_authenticated %}
+          <p><a href="{% url 'blogpost-comment' blogpost.pk %}">Add a comment</a></p>
+        {% else %}
+          <p><a href="{% url 'login'%}?next={{request.path}}">Login to add a comment</a></p>
+        {% endif %}
+{% endblock %}
