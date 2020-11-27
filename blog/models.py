@@ -24,7 +24,6 @@ class BlogPost(models.Model):
     author = models.ForeignKey(Blogger, on_delete=models.SET_NULL, null=True)
     description = models.TextField(max_length=1000, help_text="Enter the text of the blog post")
 
-
     def __str__(self):
         """String for representing the Model object"""
         return f'{self.title} - {self.author}'
